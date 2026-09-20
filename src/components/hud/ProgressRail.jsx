@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useEventsStore } from '../../store/useEventsStore';
 import { useScrollBridge } from '../../store/useScrollBridge';
 import { events } from '../../data/events';
@@ -6,7 +6,9 @@ import { events } from '../../data/events';
 export const ProgressRail = () => {
   const unlockedFaces = useEventsStore((state) => state.unlockedFaces);
   const percentRef = useRef(null);
+  const [inCubeSection, setInCubeSection] = useState(true);
 
+  // Update traversal % every frame
   useEffect(() => {
     let raf;
     const update = () => {
@@ -21,8 +23,28 @@ export const ProgressRail = () => {
     return () => cancelAnimationFrame(raf);
   }, []);
 
+  // Hide the rail when the archives section scrolls into view
+  useEffect(() => {
+    const archiveSection = document.getElementById('our-archives');
+    if (!archiveSection) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // When archives enter viewport, hide the rail; when they leave, show it again
+        setInCubeSection(!entry.isIntersecting);
+      },
+      { threshold: 0.05 } // trigger as soon as 5% of the section is visible
+    );
+
+    observer.observe(archiveSection);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="fixed left-0 top-0 bottom-0 z-40 hidden lg:flex flex-col items-center justify-center w-16 pointer-events-none">
+    <div
+      className="fixed left-0 top-0 bottom-0 z-40 hidden lg:flex flex-col items-center justify-center w-16 pointer-events-none transition-opacity duration-500"
+      style={{ opacity: inCubeSection ? 1 : 0 }}
+    >
       <div className="flex flex-col items-center gap-4 py-8 h-1/2 justify-between">
         <div className="flex flex-col gap-3">
           {events.map((evt, idx) => {
@@ -40,7 +62,7 @@ export const ProgressRail = () => {
           })}
         </div>
         
-        {/* Vertical text label using styling for vertical writing mode */}
+        {/* Vertical text label */}
         <div 
           className="font-mono text-[10px] text-text-muted tracking-widest whitespace-nowrap" 
           style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
