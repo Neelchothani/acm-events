@@ -13,8 +13,9 @@ export const ProgressRail = () => {
     let raf;
     const update = () => {
       if (percentRef.current) {
+        const isSolved = useEventsStore.getState().isSolved;
         const offset = useScrollBridge.getState().offset;
-        const pct = Math.round(offset * 100);
+        const pct = isSolved ? 100 : Math.round(offset * 100);
         percentRef.current.innerText = `${pct}%`;
       }
       raf = requestAnimationFrame(update);

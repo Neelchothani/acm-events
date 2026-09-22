@@ -40,10 +40,14 @@ const CubeRigInner = ({ snapshots, idleRotY }) => {
   const focusingFaceIdx    = useEventsStore(s => s.focusingFaceIdx);
   const setFocusingFaceIdx = useEventsStore(s => s.setFocusingFaceIdx);
   const setActiveEventId   = useEventsStore(s => s.setActiveEventId);
+  const setIsSolved        = useEventsStore(s => s.setIsSolved);
 
   const highWaterRef    = useRef(-1);
   const faceProgressRef = useRef([0, 0, 0, 0, 0, 0]);
   const lockFace        = useEventsStore(s => s.lockFace);
+
+  const initialSnapshot = snapshots[0];
+  const solvedSnapshot  = snapshots[snapshots.length - 1];
 
   /**
    * Focus animation state lives entirely in a ref (no re-renders).
@@ -151,6 +155,34 @@ const CubeRigInner = ({ snapshots, idleRotY }) => {
 
     const offset = useScrollBridge.getState().offset;
     const rawProgress = offset * TOTAL_MOVES;
+
+    const isAlreadySolved = useEventsStore.getState().isSolved;
+    const justCompleted = !isAlreadySolved && (offset >= 0.995 || rawProgress >= TOTAL_MOVES - 0.05);
+
+    if (justCompleted) {
+      setIsSolved(true);
+      highWaterRef.current = TOTAL_MOVES;
+    }
+
+    const isSolved = isAlreadySolved || justCompleted;
+
+    if (isSolved) {
+      // Cube is solved! Retain solved positions and orientations permanently
+      solvedSnapshot.forEach(cubie => {
+        const mesh = meshRefs.current[cubie.id];
+        if (!mesh) return;
+        mesh.position.set(cubie.ix, cubie.iy, cubie.iz);
+        mesh.quaternion.copy(cubie.q);
+      });
+
+      // Keep all faces fully revealed & glowing (no scramble jitter)
+      for (let i = 0; i < 6; i++) {
+        faceProgressRef.current[i] = 1;
+      }
+
+      return;
+    }
+
     const moveIndex   = Math.min(Math.floor(rawProgress), TOTAL_MOVES - 1);
     const moveProgress = rawProgress - moveIndex;
     const easedP = moveProgress < 0.5
@@ -218,9 +250,6 @@ const CubeRigInner = ({ snapshots, idleRotY }) => {
       faceProgressRef.current[faceIdx] = THREE.MathUtils.clamp(localP, 0, 1);
     });
   });
-
-  const initialSnapshot = snapshots[0];
-  const solvedSnapshot  = snapshots[snapshots.length - 1];
 
   const solvedCoords = useMemo(() => {
     const map = {};

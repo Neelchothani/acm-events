@@ -8,6 +8,7 @@ import { EventSideList } from '../events/EventSideList';
 import { ScrollHint } from '../hud/ScrollHint';
 import { EventDetailDialog } from '../events/EventDetailDialog';
 import { useScrollBridge } from '../../store/useScrollBridge';
+import { useEventsStore } from '../../store/useEventsStore';
 import { CameraOffset } from './CameraOffset';
 import { ScrambleHeading } from '../ui/ScrambleHeading';
 
@@ -76,11 +77,31 @@ export const EventsExperience = () => {
       const currentScroll = -rect.top;
       const offset = Math.max(0, Math.min(1, currentScroll / totalScroll));
       useScrollBridge.setState({ offset });
+      if (offset >= 0.995) {
+        useEventsStore.getState().setIsSolved(true);
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const archiveSection = document.getElementById('our-archives');
+    if (!archiveSection) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          useEventsStore.getState().setIsSolved(true);
+        }
+      },
+      { threshold: 0.01 }
+    );
+
+    observer.observe(archiveSection);
+    return () => observer.disconnect();
   }, []);
 
   return (

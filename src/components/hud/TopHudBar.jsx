@@ -1,7 +1,10 @@
 import React from 'react';
 import { Menu, Globe } from 'lucide-react';
+import { useEventsStore } from '../../store/useEventsStore';
 
 export const TopHudBar = () => {
+  const isSolved = useEventsStore((state) => state.isSolved);
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-8 py-4 bg-panel border-b border-border-hairline backdrop-blur-sm">
       {/* Left: Brand */}
@@ -20,7 +23,7 @@ export const TopHudBar = () => {
         <span className="mx-2">/</span>
         <span>EVENTS</span>
         <span className="mx-2">/</span>
-        <span className="text-cyan">SOLVE TO UNLOCK</span>
+        <span className="text-cyan">{isSolved ? 'ALL EVENTS UNLOCKED' : 'SOLVE TO UNLOCK'}</span>
       </div>
 
       {/* Right: Nav Pills & Mobile Menu */}

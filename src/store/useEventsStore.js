@@ -19,7 +19,20 @@ export const useEventsStore = create((set) => ({
     return { unlockedFaces: newUnlocked };
   }),
 
+  focusingFaceIdx: null,
+  setFocusingFaceIdx: (idx) => set({ focusingFaceIdx: idx }),
+  isSolved: false,
+
+  setIsSolved: (isSolved) => set((state) => {
+    if (state.isSolved === isSolved) return state;
+    return {
+      isSolved,
+      unlockedFaces: isSolved ? [true, true, true, true, true, true] : state.unlockedFaces,
+    };
+  }),
+
   lockFace: (index) => set((state) => {
+    if (state.isSolved) return state; // Never lock once solved!
     if (!state.unlockedFaces[index]) return state; // Already locked
     const newUnlocked = [...state.unlockedFaces];
     newUnlocked[index] = false;
@@ -28,6 +41,4 @@ export const useEventsStore = create((set) => ({
 
   setActiveEventId: (id) => set({ activeEventId: id }),
   setIsLowPerformance: (isLow) => set({ isLowPerformance: isLow }),
-  focusingFaceIdx: null,
-  setFocusingFaceIdx: (idx) => set({ focusingFaceIdx: idx }),
 }));
