@@ -11,7 +11,7 @@ export const archivedEvents = [
     title: 'TEACHERS DAY 2024',
     date: 'SEP 2024',
     category: 'TEACHERS DAY',
-    accentColor: '#26E3EF', // Cyan
+    accentColor: '#00D8FF', // Blue (Cube EVT.01)
     description: 'Special Teachers Day celebration, tribute and recognition ceremony for 2024.',
     images: [
       '/archives/td24/img1.jpeg',
@@ -24,7 +24,7 @@ export const archivedEvents = [
     title: 'TEACHERS DAY 2025',
     date: 'SEP 2025',
     category: 'TEACHERS DAY',
-    accentColor: '#00F6FF', // Bright Cyan
+    accentColor: '#FF3BBF', // Pink (Cube EVT.02)
     description: 'Teachers Day celebration and honors ceremony for 2025.',
     images: [
       '/archives/td25/img1.jpeg',
@@ -38,7 +38,7 @@ export const archivedEvents = [
     title: 'TEACHERS DAY 2026',
     date: 'SEP 2026',
     category: 'TEACHERS DAY',
-    accentColor: '#38E8F5', // Electric Blue
+    accentColor: '#00F5D4', // Blue shade (Cube EVT.03)
     description: 'Teachers Day event gathering and commemorative edition for 2026.',
     images: [
       '/archives/td26/img1.png',
@@ -53,7 +53,7 @@ export const archivedEvents = [
     date: '8–9 FEB 2025',
     theme: 'Super Mario',
     category: 'LINES OF CODE',
-    accentColor: '#00FF66', // Matrix Green
+    accentColor: '#FF4D6D', // Pink shade (Cube EVT.04)
     description: 'Theme: Super Mario. 36-hour competitive hackathon bringing developers together to build projects in a game-inspired arena.',
     images: [
       '/archives/loc7/img1.jpeg',
@@ -68,7 +68,7 @@ export const archivedEvents = [
     date: '21–22 FEB 2026',
     theme: 'Suits / Cards',
     category: 'LINES OF CODE',
-    accentColor: '#FF9900', // Amber Gold
+    accentColor: '#2563FF', // Blue shade (Cube EVT.05)
     description: 'Theme: Suits / Cards. High-stakes hackathon edition where teams play their hand in a sleek corporate code arena.',
     images: [
       '/archives/loc8/img1.jpeg',
@@ -82,7 +82,7 @@ export const archivedEvents = [
     date: '15 OCT 2024',
     theme: 'Squid Game',
     category: 'CYBER HUNT',
-    accentColor: '#FF2A6D', // Neon Pink
+    accentColor: '#E040FB', // Pink shade (Cube EVT.06)
     description: 'Theme: Squid Game. Cryptic online treasure hunt across digital grid nodes — survive the challenges, decode the cipher, claim the prize.',
     images: [
       '/archives/digihunt5/img1.jpeg',
@@ -96,7 +96,7 @@ export const archivedEvents = [
     date: '14 OCT 2025',
     theme: 'F1',
     category: 'CYBER HUNT',
-    accentColor: '#D84FE0', // Neon Purple
+    accentColor: '#00D8FF', // Blue shade (Cube EVT.01)
     description: 'Theme: F1. High-speed cryptic hunt where teams race through challenge checkpoints, cipher grids, and deadline laps.',
     images: [
       '/archives/digihunt6/img1.jpeg',
@@ -110,7 +110,7 @@ export const archivedEvents = [
     title: 'INTERNSHIP FAIR 2025',
     date: 'APR 2025',
     category: 'CAREER EXPO',
-    accentColor: '#FFCE54', // Cyber Yellow
+    accentColor: '#FF3BBF', // Pink shade (Cube EVT.02)
     description: 'Exclusive career and internship recruitment drive connecting top tech companies, startups, and talented student developers.',
     images: [
       '/archives/internship-fair-25/img1.jpeg',
