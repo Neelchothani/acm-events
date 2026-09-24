@@ -9,7 +9,7 @@ export const events = [
     venue: "Online / Campus",
     description: "The next iteration of DigiHunt returns. Crack the ciphers, navigate the grid, decode the mystery. Theme and challenges dropping soon — stay sharp.",
     tags: ["Competition"],
-    accentColor: "#00FF00",   // Pure Green
+    accentColor: "#00D8FF",   // Original Blue
     ctaLabel: "Stay Tuned",
     ctaHref: "#"
   },
@@ -23,7 +23,7 @@ export const events = [
     venue: "TBA",
     description: "Lines of Code 9.0 — the biggest annual hackathon is coming back. A new theme, a bigger arena, and more builders than ever. Details dropping soon.",
     tags: ["Hackathon"],
-    accentColor: "#FF0055",   // Neon Red
+    accentColor: "#FF3BBF",   // Original Pink
     ctaLabel: "Stay Tuned",
     ctaHref: "#"
   },
@@ -37,7 +37,7 @@ export const events = [
     venue: "Design Lab",
     description: "A hands-on workshop focused on creating user-centric interfaces. Wireframing to high-fidelity mockups.",
     tags: ["Workshop"],
-    accentColor: "#FF0000",   // Pure Red
+    accentColor: "#00F5D4",   // Event 3
     ctaLabel: "Register",
     ctaHref: "#"
   },
@@ -51,7 +51,7 @@ export const events = [
     venue: "Cyber Range",
     description: "Put your offensive and defensive skills to the test in this late-night jeopardy style CTF.",
     tags: ["Competition"],
-    accentColor: "#0044FF",   // Deep Electric Blue
+    accentColor: "#FF4D6D",   // Event 4
     ctaLabel: "Register",
     ctaHref: "#"
   },
@@ -65,7 +65,7 @@ export const events = [
     venue: "Innovation Center",
     description: "Fireside chats with alumni who successfully navigated the startup ecosystem. Networking to follow.",
     tags: ["Networking"],
-    accentColor: "#FFFFFF",   // Pure White
+    accentColor: "#2563FF",   // Event 5
     ctaLabel: "Register",
     ctaHref: "#"
   },
@@ -79,7 +79,7 @@ export const events = [
     venue: "Grand Hall",
     description: "End of semester showcase where project teams demonstrate their products. Prizes for top teams.",
     tags: ["Showcase"],
-    accentColor: "#FF7700",   // Neon Orange (hue  30°)
+    accentColor: "#E040FB",   // Event 6
     ctaLabel: "Register",
     ctaHref: "#"
   }

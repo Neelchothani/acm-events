@@ -106,13 +106,11 @@ export const EventsExperience = () => {
 
   return (
     <div ref={containerRef} className="w-full h-[600vh] md:h-[800vh] relative">
-      {/* Sticky viewport — dot grid sits here so it shows through the transparent canvas */}
+      {/* Sticky viewport — transparent so the global seamless gradient dot grid shows through */}
       <div
         className="sticky top-0 left-0 w-full h-screen overflow-hidden"
         style={{
-          backgroundColor: '#04060B',
-          backgroundImage: 'radial-gradient(rgba(38, 227, 239, 0.18) 1px, transparent 1px)',
-          backgroundSize: '28px 28px',
+          backgroundColor: 'transparent',
         }}
       >
         <Canvas
@@ -132,7 +130,7 @@ export const EventsExperience = () => {
             shadow-mapSize={[1024, 1024]}
           />
           <directionalLight position={[-8, -6, 4]} intensity={0.8} />
-          <pointLight position={[-6, -4, 4]} intensity={0.8} color="#26E3EF" />
+          <pointLight position={[-6, -4, 4]} intensity={0.8} color="#00D8FF" />
 
           <Suspense fallback={null}>
             <CubeRig />

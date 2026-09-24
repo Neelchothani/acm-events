@@ -4,6 +4,7 @@ import { EventsExperience } from './components/cube/EventsExperience';
 import { AccessibleFallbackList } from './components/events/AccessibleFallbackList';
 import { ArchiveSection } from './components/archive/ArchiveSection';
 import { EventDetailDialog } from './components/events/EventDetailDialog';
+import { InteractiveBackground } from './components/ui/InteractiveBackground';
 import { getRenderMode } from './utils/getRenderMode';
 
 function App() {
@@ -19,6 +20,9 @@ function App() {
 
   return (
     <>
+      {/* ── Global Seamless Gradient Dot Grid with Interactive Cursor Glow ── */}
+      <InteractiveBackground />
+
       <TopHudBar />
       
       <main>

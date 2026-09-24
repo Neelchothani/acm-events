@@ -9,9 +9,6 @@
     overflow-x: hidden;
     overflow-y: auto;
     background-color: #04060B;
-    background-image: radial-gradient(rgba(38, 227, 239, 0.18) 1px, transparent 1px);
-    background-size: 28px 28px;
-    background-attachment: fixed;
   }
 
   h1, h2, h3, h4, h5, h6 {
